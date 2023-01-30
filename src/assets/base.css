@@ -54,6 +54,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  padding: 0;
   margin: 0;
   position: relative;
   font-weight: normal;
@@ -71,4 +72,13 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+li{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color: var(--color-text);
 }
