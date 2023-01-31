@@ -156,6 +156,7 @@ export const useSakuraArms = defineStore('sakuraArms', () => {
     currentState.value = JSON.parse(JSON.stringify(initialState));
   };
 
+  // #region 获取和存储数据
   // 把数据存储到本地
   const saveToStorage = () => {
     localStorage.setItem('sakuraArms', JSON.stringify(currentState.value));
@@ -165,7 +166,9 @@ export const useSakuraArms = defineStore('sakuraArms', () => {
   const getFromStorage = () => {
     currentState.value = localStorage.getItem('sakuraArms') ? JSON.parse(localStorage.getItem('sakuraArms')) : JSON.parse(JSON.stringify(initialState));
   };
+  //#endregion
 
+  //#region 修改token数量
   // 减token数量，无法再减则返回false，否则返回true
   const minusToken = (primaryIndex: string, areaName: string) => {
     // 如果当前token数量小于等于零，则不修改
@@ -194,7 +197,9 @@ export const useSakuraArms = defineStore('sakuraArms', () => {
 
     return true;
   };
+  //#endregion
 
+  //#region 付与牌相关
   // 添加付与牌
   const addEnhanCard = (primaryIndex: string) => {
     for (let i in currentState.value[primaryIndex]) {
@@ -219,6 +224,9 @@ export const useSakuraArms = defineStore('sakuraArms', () => {
     // 修改数值后存储到本地
     saveToStorage();
   };
+  //#endregion
+
+  //#region token数量计算，以及抵消差值函数
   // 理论总的token数量
   const totalTokenCount = ref(36);
 
@@ -260,6 +268,12 @@ export const useSakuraArms = defineStore('sakuraArms', () => {
       currentState.value.shared.shadow.count = 0;
     }
   };
+  //#endregion
 
-  return { resetState, currentState, saveToStorage, getFromStorage, minusToken, addToken, addEnhanCard, removeAllEnhanCardToken, tokenDifference, offsetTokenDifference };
+  //#region 弹窗相关
+  const isResetShow = ref(false)
+  const isHelpShow = ref(false)
+  //#endregion
+
+  return { resetState, currentState, saveToStorage, getFromStorage, minusToken, addToken, addEnhanCard, removeAllEnhanCardToken, tokenDifference, offsetTokenDifference, isResetShow, isHelpShow };
 });

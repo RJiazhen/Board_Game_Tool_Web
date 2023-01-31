@@ -4,17 +4,18 @@
       <SaPlayer class="player player1" playerName="player1"></SaPlayer>
       <SaPlayer class="player player2" playerName="player2"></SaPlayer>
       <!-- 中心菜单 -->
-
+      <!-- FIXME 这里直接在 -->
       <SaMenu class="menu"></SaMenu>
+      <SaResetDialog></SaResetDialog>
+      <SaHelpDialog></SaHelpDialog>
     </view>
   </view>
 </template>
 
 <script setup lang="ts">
-import SaMenu from "@/components/sa-menu.vue";
-import SaPlayer from "@/components/sa-player.vue"
 import { onMounted } from 'vue';
 import { useSakuraArms } from '@/stores/sakuraArms';
+// import type saHelpDialogVue from '@/components/sa-help-dialog.vue';
 
 const sakuraArms = useSakuraArms();
 onMounted(() => {

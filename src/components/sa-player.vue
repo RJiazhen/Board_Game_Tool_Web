@@ -1,20 +1,20 @@
 <template>
-  <view class="player" id="player">
-    <view class="board-view">
-      <view class="boards">
+  <div class="player" id="player">
+    <div class="board-div">
+      <div class="boards">
         <!-- 面板一 -->
-        <view class="board board-1">
+        <div class="board board-1">
           <!-- 公共区域 -->
-          <view class="shared">
+          <div class="shared">
             <!-- 虚 -->
             <SaArea class="sa-area" primaryAreaName="shared" areaName="shadow" style="width: 50%">
             </SaArea>
             <!-- 距 -->
             <SaArea primaryAreaName="shared" areaName="distance" style="width: 50%">
             </SaArea>
-          </view>
+          </div>
           <!-- 个人区域 -->
-          <view class="personal">
+          <div class="personal">
             <!-- 装 -->
             <SaArea class="sa-area" :primaryAreaName="props.playerName" areaName="aura" style="width: 33%">
             </SaArea>
@@ -24,12 +24,12 @@
             <!-- 命 -->
             <SaArea class="sa-area" :primaryAreaName="props.playerName" areaName="life" style="width: 33%">
             </SaArea>
-          </view>
+          </div>
           <!-- 樱花数量提示区域 -->
           <SaTokenTip class="token-tip"></SaTokenTip>
-        </view>
+        </div>
         <!-- 面板二 -->
-        <view class="board board-2">
+        <div class="board board-2">
           <!-- 付与牌区域 -->
           <SaEnhanCard class="enhan-card" v-for="(card, index) in enhans" :key="index"
             :primaryAreaName="props.playerName" :order="card.order">
@@ -41,19 +41,13 @@
           </SaEnhanBtnRemoveAll>
           <!-- token数量提示 -->
           <SaTokenTip class="token-tip"></SaTokenTip>
-        </view>
-      </view>
-    </view>
-  </view>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import SaArea from './sa-area.vue';
-import SaEnhanCard from "./sa-enhan-card.vue";
-import SaEnhanBtnAdd from "./sa-enhan-btn-add.vue";
-import SaEnhanBtnRemoveAll from "./sa-enhan-btn-remove-all.vue";
-import SaTokenTip from "./sa-token-tip.vue";
-
 import {
   computed,
   getCurrentInstance,
@@ -89,11 +83,10 @@ const enhans = computed(() => {
 
   position: relative;
 
-  .board-view {
+  .board-div {
     width: 100%;
     height: 100%;
-    // TODO 解决无法滚动到Board2问题
-    overflow: scroll;
+    overflow-x: scroll;
 
     .boards {
       width: 200%;
@@ -110,7 +103,6 @@ const enhans = computed(() => {
 
       // 面板一
       .board-1 {
-        position: relative;
 
         .token-tip {
           position: absolute;
@@ -148,7 +140,7 @@ const enhans = computed(() => {
         display: flex;
         flex-wrap: wrap;
 
-        overflow: scroll;
+        // overflow: hidden;
 
         // 单张付与牌
         .enhan-card {
