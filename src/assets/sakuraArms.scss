@@ -61,7 +61,7 @@ $menu-border-size: calcSize(320);
 // 中心环型菜单尺寸（宽高相同）
 $menu-btn-wheel-size: calc($menu-border-size - 20px);
 // 中心环型菜单按钮尺寸
-$menu-btn-width: calcSize(60);
+$menu-btn-width: calcSize(80);
 $menu-btn-height: calcSize(85);
 // 中心环型菜单按钮图标尺寸
 $menu-btn-icon-size: calcSize(55);
@@ -100,6 +100,11 @@ $menu-btn-close-rect-height: calcSize(3.5);
 
 // 中心菜单动画时间
 $menu-animation-time: 0.2s;
+
+// 默认字体为黑色，覆盖main.css中黑暗模式下的灰色字体
+* {
+  color: #000;
+}
 
 .bg {
   width: 100%;

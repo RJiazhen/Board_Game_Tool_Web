@@ -24,6 +24,8 @@ onMounted(() => {
 </script>
 
 <style scoped lang="scss">
+@import "@/assets/sakuraArms.scss";
+
 .container {
   height: 100%;
   width: 100%;
