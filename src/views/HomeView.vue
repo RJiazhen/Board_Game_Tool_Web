@@ -28,6 +28,7 @@
 .home {
   display: flex;
   flex-direction: column;
+  padding: 100px 0;
 
   .info {
     display: flex;
@@ -70,6 +71,7 @@
 
 @media (min-width: 1024px) {
   .home {
+    margin: auto;
     width: 1024px;
     flex-direction: row;
 
