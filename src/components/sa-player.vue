@@ -1,6 +1,6 @@
 <template>
   <div class="player" id="player">
-    <div class="board-div">
+    <div class="board-view">
       <div class="boards">
         <!-- 面板一 -->
         <div class="board board-1">
@@ -83,7 +83,7 @@ const enhans = computed(() => {
 
   position: relative;
 
-  .board-div {
+  .board-view {
     width: 100%;
     height: 100%;
     overflow-x: scroll;
@@ -139,8 +139,7 @@ const enhans = computed(() => {
       .board-2 {
         display: flex;
         flex-wrap: wrap;
-
-        // overflow: hidden;
+        overflow-y: scroll;
 
         // 单张付与牌
         .enhan-card {
