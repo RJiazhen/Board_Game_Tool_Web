@@ -39,6 +39,7 @@ const addEnhanCard = () => {
   height: 100%;
   border-radius: 12px;
   overflow: hidden;
+  color: #000;
 
   position: relative;
 
