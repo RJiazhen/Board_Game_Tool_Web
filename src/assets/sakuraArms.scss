@@ -1,0 +1,329 @@
+// 根据界面宽度或高度中小的那个尺寸，以及最小尺寸计算当前尺寸或字号
+@function calcSize($minSize) {
+  // 最小尺寸时对应的界面宽度
+  $viewWidth: 375;
+  // 最小尺寸时对应的界面高度
+  $viewHeight: 723;
+  // 最小尺寸对应的vw
+  $vwSize: calc($minSize / $viewWidth * 100);
+  // 最小尺寸对应的vh
+  $vhSize: calc($minSize / $viewHeight * 100);
+  @return max(min(#{$vwSize}vw, #{$vhSize}vh), #{$minSize}px);
+}
+
+// 弹窗尺寸
+$popup-width: calcSize(290);
+// 弹窗标题字体大小
+$popup-title-font-size: calcSize(16);
+// 弹窗正文字体大小
+$popup-body-font-size: calcSize(14);
+
+// 区域名称字号
+$area-name-font-size: calcSize(20);
+// 区域图标大小（宽高相同）
+$area-icon-size: calcSize(35);
+// 区域加减号大小（宽高相同）
+$area-add-n-minus-size: calcSize(36);
+// 按钮文本字号
+$area-info-text-font-size: calcSize(25);
+// 按钮图标字号
+$area-info-icon-size: calcSize(30);
+// 区域token数量字号
+$area-count-font-size: calcSize(70);
+// 区域token上限字号
+$area-limit-font-size: calcSize(10);
+// 变化数字提示字号
+$change-count-font-size: calcSize(25);
+
+// 普通区域的背景颜色
+$area-normal-bg-color: #f7f8fc;
+// 普通区域激活时的背景颜色
+$area-normal-activated-bg-color: rgba(0, 0, 0, 0.2);
+// 区域名称颜色
+$area-name-color: #8a7975;
+// 付与牌区域背景颜色
+$area-enhan-bg-color: #e6ffed;
+// 付与牌区域名称颜色
+$area-enhan-name-color: #8a7975;
+
+// token数量提示组件边框颜色
+$token-tip-boader-color: #f0f1f2;
+// token数量提示组件尺寸
+$token-tip-width: calcSize(80);
+$token-tip-height: calcSize(35);
+// token数量提示组件icon尺寸
+$token-tip-icon-size: calcSize(50);
+// token数量提示组件字体大小
+$token-tip-token-count: calcSize(25);
+
+// 中心环型菜单边框尺寸
+$menu-border-size: calcSize(320);
+// 中心环型菜单尺寸（宽高相同）
+$menu-btn-wheel-size: calc($menu-border-size - 20px);
+// 中心环型菜单按钮尺寸
+$menu-btn-width: calcSize(60);
+$menu-btn-height: calcSize(85);
+// 中心环型菜单按钮图标尺寸
+$menu-btn-icon-size: calcSize(55);
+// 中心环型菜单文本大小
+$menu-btn-name-font-size: calcSize(30);
+
+// 中心环型菜单边框尺寸
+$menu-border-size: 320px;
+// 中心环型菜单尺寸（宽高相同）
+$menu-btn-wheel-size: 300px;
+// 中心环型菜单按钮尺寸
+$menu-btn-width: 60px;
+$menu-btn-height: 85px;
+// 中心环型菜单按钮图标尺寸
+$menu-btn-icon-size: 55px;
+// 中心环型菜单文本大小
+$menu-btn-name-font-size: 30px;
+
+// 中心按钮背景尺寸
+$menu-center-btn-bg-size: calcSize(33);
+// 中心按钮背景边框圆角尺寸
+$menu-center-btn-bg-border-size: calcSize(6.6);
+// 中心打开菜单和关闭菜单按钮尺寸
+$menu-btn-open-n-close-size: calcSize(25);
+// 中心打开菜单和关闭菜单按钮矩形边框圆角尺寸
+$menu-btn-open-n-close-rect-border-radius: calcSize(5);
+// 中心打开菜单按钮距型尺寸
+$menu-btn-open-rect-width: calcSize(15);
+$menu-btn-open-rect-height: calcSize(3);
+// 中心打开菜单按钮矩形间距
+$menu-btn-open-rect-translateY: calcSize(6);
+// 中心关闭菜单按钮距型尺寸
+$menu-btn-close-rect-width: calcSize(23);
+$menu-btn-close-rect-height: calcSize(3.5);
+
+
+// 中心菜单动画时间
+$menu-animation-time: 0.2s;
+
+.bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+
+  .bg-left {
+    width: 50%;
+    height: 100%;
+    background: $area-normal-bg-color;
+    transition: 0.2s all ease-out;
+  }
+
+  .bg-right {
+    width: 50%;
+    height: 100%;
+    background: $area-normal-bg-color;
+    transition: 0.2s all ease-out;
+  }
+
+  // 激活时的背景
+  .activated {
+    background: $area-normal-activated-bg-color !important;
+  }
+}
+
+// area的信息展示层
+.info {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+
+  .name {
+    position: absolute;
+    left: 11px;
+    top: 11px;
+    font-size: $area-name-font-size;
+    line-height: $area-name-font-size;
+    display: flex;
+    align-items: baseline;
+    text-align: center;
+    color: $area-name-color;
+  }
+
+  .info-text {
+    font-weight: 500;
+    font-size: $area-info-text-font-size;
+    line-height: $area-info-text-font-size;
+    text-align: center;
+    width: 100%;
+  }
+
+  .info-icon {
+    width: $area-info-icon-size;
+    height: $area-info-icon-size;
+    margin-top: 10px;
+  }
+
+  // 图标
+  .icon {
+    position: absolute;
+    left: calc($area-name-font-size + 10px);
+
+    .icon-img {
+      width: $area-icon-size;
+      height: $area-icon-size;
+    }
+  }
+
+  // 弹出变化的数字
+  .change-count-area {
+    width: calc($change-count-font-size * 3);
+    height: $change-count-font-size;
+
+    position: absolute;
+    left: 50%;
+    top: calc(50% - calc($area-count-font-size / 1.7));
+
+    translate: -50% -50%;
+    overflow: hidden;
+
+    .change-count {
+      line-height: $change-count-font-size;
+      font-size: $change-count-font-size;
+      text-align: center;
+      text-align: center;
+      transform-origin: center;
+
+      position: absolute;
+      left: 50%;
+
+      translate: -50% 100%;
+
+      // 文字描边
+      -webkit-text-stroke: 0.3px #000;
+
+      // 变化值为0时
+      &.no-change {
+        display: none;
+        color: rgba(0, 0, 0, 0);
+      }
+
+      // token减少时
+      &.minus-count {
+        translate: -50% 0;
+        color: #23c3db;
+      }
+
+      // token增加时
+      &.add-count {
+        translate: -50% 0;
+        color: #cf6379;
+      }
+    }
+  }
+
+  // token数量及限制
+  .token {
+    font-weight: 1000;
+  }
+
+  .token-count {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: $area-count-font-size;
+    line-height: $area-count-font-size;
+    // 文字描边
+    -webkit-text-stroke: 0.3px;
+
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+
+    // 虚的文字样式
+    &.token-count-shadow {
+      background: linear-gradient(179.39deg, #d2d7d9 10%, rgba(30, 31, 31, 0.5) 90%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    // 距的文字样式
+    &.token-count-distance {
+      background: linear-gradient(180deg, #ffc5e7 20%, #302b34);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    // 装的文字样式
+    &.token-count-aura {
+      background: linear-gradient(90deg, #b4b4b4 34.78%, rgba(213, 210, 210, 0.85) 51.07%, #bebebe 63.48%),
+        linear-gradient(180.23deg, #fafafa 35.78%, #d9d9d9 44.24%, #ebebec 52.07%, #d3d3d3 65.85%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    // 气的文字样式
+    &.token-count-flare {
+      background: linear-gradient(180deg, #ffb774 10%, #f39789 66.21%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    // 命的文字样式
+    &.token-count-life {
+      background: linear-gradient(180deg, rgba(219, 46, 27, 0.5) 10%, #b31928 66.21%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+  }
+
+  .token-limit {
+    position: absolute;
+    right: calc(50% - calc(6 * $area-limit-font-size));
+    bottom: calc(50% - 30px);
+    font-size: $area-limit-font-size;
+    color: #b0c1d9;
+  }
+
+  .minus {
+    position: absolute;
+    left: 18%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .add {
+    position: absolute;
+    right: 18%;
+    top: 50%;
+    transform: translate(50%, -50%);
+  }
+
+  // 加减号共用样式
+  .sign {
+    width: $area-add-n-minus-size;
+    height: $area-add-n-minus-size;
+  }
+}
+
+// area的触摸层
+.touch {
+  width: 90%;
+  height: 90%;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .touch-left {
+    width: 50%;
+    height: 100%;
+  }
+
+  .touch-right {
+    width: 50%;
+    height: 100%;
+  }
+}
