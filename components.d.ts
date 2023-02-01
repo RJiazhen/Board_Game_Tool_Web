@@ -7,9 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    copy: typeof import('./src/components/sa-reset-dialog copy.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
-    ElDia: typeof import('element-plus/es')['ElDia']
     ElDialog: typeof import('element-plus/es')['ElDialog']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
